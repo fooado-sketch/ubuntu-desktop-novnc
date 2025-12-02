@@ -84,10 +84,10 @@ def main():
             # app = DebuggedApplication(app, evalex=True)
 
         try:
-            log.info('Listening on http://localhost:{}'.format(PORT))
-            http_server = WSGIServer(('localhost', PORT), app)
+            log.info('Listening on http://0.0.0.0:{}'.format(PORT))
+            http_server = WSGIServer(('0.0.0.0', PORT), app)
             http_server.serve_forever()
-            # app.run(host='localhost', port=PORT)
+            app.run(host='0.0.0.0', port=PORT)
         except socket.error as e:
             log.exception(e)
         except KeyboardInterrupt:
